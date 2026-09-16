@@ -1,0 +1,1387 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@500;600;700&display=swap');
+
+
+:root {
+
+  --bg: #17130f;
+  --bg-light: #211b15;
+
+  --panel: #292119;
+  --panel-light: #33291f;
+
+  --gold: #d6ae62;
+  --gold-light: #f2d69a;
+
+  --cream: #eee1c5;
+  --muted: #9f8d72;
+
+  --border: #66513a;
+
+  --red: #a94b3b;
+
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #3b2b1d 0%,
+      var(--bg) 50%
+    );
+
+  color: var(--cream);
+
+  font-family: 'DM Mono', monospace;
+
+}
+
+
+button {
+
+  font: inherit;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+
+.app {
+
+  width: min(1200px, 100%);
+
+  margin: auto;
+
+  padding: 28px 24px 0;
+
+}
+
+
+.topbar {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding-bottom: 24px;
+
+  border-bottom: 1px solid var(--border);
+
+}
+
+
+.brand {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+}
+
+
+.brand-symbol {
+
+  display: grid;
+
+  place-items: center;
+
+  width: 48px;
+
+  height: 48px;
+
+  border: 1px solid var(--gold);
+
+  color: var(--gold);
+
+  font-size: 25px;
+
+}
+
+
+.brand h1 {
+
+  margin: 0;
+
+  color: var(--gold-light);
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: clamp(18px, 3vw, 28px);
+
+  letter-spacing: 2px;
+
+}
+
+
+.brand p {
+
+  margin: 5px 0 0;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+}
+
+
+.header-stats {
+
+  display: flex;
+
+  gap: 28px;
+
+  text-align: right;
+
+}
+
+
+.header-stats span,
+.header-stats strong {
+
+  display: block;
+
+}
+
+
+.header-stats span {
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+}
+
+
+.header-stats strong {
+
+  margin-top: 7px;
+
+  color: var(--gold-light);
+
+  font-size: 20px;
+
+}
+
+
+.screen {
+
+  display: none;
+
+}
+
+
+.screen.active {
+
+  display: block;
+
+}
+
+
+.hero {
+
+  padding: 75px 0 65px;
+
+  max-width: 760px;
+
+}
+
+
+.hero-label {
+
+  color: var(--gold);
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+}
+
+
+.hero h2 {
+
+  margin: 20px 0;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: clamp(40px, 6vw, 76px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+}
+
+
+.hero h2 em {
+
+  color: var(--gold);
+
+  font-style: normal;
+
+}
+
+
+.hero p {
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 2;
+
+}
+
+
+.gold-button {
+
+  margin-top: 25px;
+
+  padding: 15px 25px;
+
+  border: 1px solid var(--gold);
+
+  background: var(--gold);
+
+  color: #21180f;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  transition: .2s;
+
+}
+
+
+.gold-button:hover {
+
+  background: var(--gold-light);
+
+  transform: translateY(-2px);
+
+}
+
+
+.gold-button span {
+
+  margin-left: 20px;
+
+}
+
+
+.section-title {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  margin-bottom: 25px;
+
+}
+
+
+.section-title span {
+
+  color: var(--gold);
+
+  font-size: 12px;
+
+}
+
+
+.section-title h3 {
+
+  margin: 0;
+
+  font-size: 13px;
+
+  letter-spacing: 1px;
+
+}
+
+
+.section-title div {
+
+  flex: 1;
+
+  height: 1px;
+
+  background: var(--border);
+
+}
+
+
+.game-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 15px;
+
+}
+
+
+.game-card {
+
+  min-height: 230px;
+
+  padding: 23px;
+
+  text-align: left;
+
+  color: var(--cream);
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.025),
+      transparent
+    ),
+
+    var(--panel);
+
+  border: 1px solid var(--border);
+
+  position: relative;
+
+  transition: .2s;
+
+}
+
+
+.game-card:hover {
+
+  border-color: var(--gold);
+
+  transform: translateY(-4px);
+
+}
+
+
+.card-top,
+.card-bottom {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+}
+
+
+.game-number {
+
+  color: var(--gold);
+
+  font-size: 12px;
+
+}
+
+
+.game-icon {
+
+  color: var(--gold);
+
+  font-size: 27px;
+
+}
+
+
+.game-card h3 {
+
+  margin: 32px 0 12px;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 22px;
+
+}
+
+
+.game-card p {
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+  line-height: 1.9;
+
+}
+
+
+.card-bottom {
+
+  position: absolute;
+
+  bottom: 20px;
+
+  left: 23px;
+
+  right: 23px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid #4a3929;
+
+  color: var(--gold);
+
+  font-size: 10px;
+
+}
+
+
+.record-panel {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 35px;
+
+  margin: 45px 0;
+
+  padding: 25px;
+
+  background: var(--panel);
+
+  border: 1px solid var(--border);
+
+}
+
+
+.panel-label {
+
+  color: var(--gold);
+
+  font-size: 10px;
+
+}
+
+
+.record-panel h3 {
+
+  margin: 8px 0 0;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 23px;
+
+}
+
+
+.record-values {
+
+  display: flex;
+
+  gap: 40px;
+
+  margin-left: auto;
+
+}
+
+
+.record-values span,
+.record-values strong {
+
+  display: block;
+
+}
+
+
+.record-values span {
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+}
+
+
+.record-values strong {
+
+  margin-top: 8px;
+
+  color: var(--gold-light);
+
+  font-size: 24px;
+
+}
+
+
+.small-button {
+
+  padding: 10px 15px;
+
+  border: 1px solid var(--border);
+
+  background: transparent;
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+}
+
+
+.small-button:hover {
+
+  border-color: var(--gold);
+
+  color: var(--gold);
+
+}
+
+
+footer {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 25px 0;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+}
+
+
+/* 게임 화면 */
+
+.game-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 40px 0 25px;
+
+  border-bottom: 1px solid var(--border);
+
+}
+
+
+.back-button {
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+}
+
+
+.back-button:hover {
+
+  color: var(--gold);
+
+}
+
+
+.game-header > div:nth-child(2) {
+
+  text-align: center;
+
+}
+
+
+#gameCategory {
+
+  color: var(--gold);
+
+  font-size: 10px;
+
+}
+
+
+#gameTitle {
+
+  margin: 8px 0 0;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 28px;
+
+}
+
+
+.game-timer {
+
+  text-align: right;
+
+}
+
+
+.game-timer span {
+
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+}
+
+
+.game-timer strong {
+
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--gold-light);
+
+  font-size: 26px;
+
+}
+
+
+.game-board {
+
+  margin: 30px 0 70px;
+
+  padding: 25px;
+
+  background: var(--panel);
+
+  border: 1px solid var(--border);
+
+}
+
+
+.game-instructions {
+
+  padding: 15px;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.8;
+
+}
+
+
+.game-area {
+
+  min-height: 370px;
+
+  margin-top: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  position: relative;
+
+  background: #18130f;
+
+  border: 1px solid #493726;
+
+}
+
+
+.game-info {
+
+  display: flex;
+
+  justify-content: space-around;
+
+  margin-top: 25px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid var(--border);
+
+  text-align: center;
+
+}
+
+
+.game-info span,
+.game-info strong {
+
+  display: block;
+
+}
+
+
+.game-info span {
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+}
+
+
+.game-info strong {
+
+  margin-top: 7px;
+
+  color: var(--gold-light);
+
+  font-size: 24px;
+
+}
+
+
+/* 반응속도 */
+
+.reaction-target {
+
+  width: 190px;
+
+  height: 190px;
+
+  border-radius: 50%;
+
+  border: 2px solid var(--gold);
+
+  background: #39271b;
+
+  color: var(--gold-light);
+
+  font-size: 20px;
+
+}
+
+
+.reaction-target.ready {
+
+  background: #6d3027;
+
+  border-color: #e7a08a;
+
+}
+
+
+.reaction-target.go {
+
+  background: #47754e;
+
+  border-color: #c5e2b8;
+
+}
+
+
+/* 카드 기억력 */
+
+.memory-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 75px);
+
+  gap: 10px;
+
+}
+
+
+.memory-card {
+
+  width: 75px;
+
+  height: 85px;
+
+  border: 1px solid var(--border);
+
+  background: #332619;
+
+  color: var(--gold);
+
+  font-size: 25px;
+
+}
+
+
+.memory-card.flipped,
+.memory-card.matched {
+
+  background: var(--gold);
+
+  color: #21180f;
+
+}
+
+
+.memory-card.matched {
+
+  opacity: .5;
+
+}
+
+
+/* 숫자 */
+
+.number-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 65px);
+
+  gap: 10px;
+
+}
+
+
+.number-button {
+
+  width: 65px;
+
+  height: 65px;
+
+  border: 1px solid var(--border);
+
+  background: #332619;
+
+  color: var(--gold-light);
+
+  font-size: 20px;
+
+}
+
+
+.number-button:hover {
+
+  background: var(--gold);
+
+  color: #21180f;
+
+}
+
+
+/* 색깔 */
+
+.color-word {
+
+  margin-bottom: 30px;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 45px;
+
+}
+
+
+.color-options {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 100px);
+
+  gap: 12px;
+
+}
+
+
+.color-option {
+
+  width: 100px;
+
+  height: 55px;
+
+  border: 2px solid transparent;
+
+}
+
+
+.color-option:hover {
+
+  border-color: white;
+
+}
+
+
+/* 집중력 */
+
+.focus-target {
+
+  position: absolute;
+
+  width: 45px;
+
+  height: 45px;
+
+  border-radius: 50%;
+
+  border: 2px solid var(--gold-light);
+
+  background: var(--gold);
+
+}
+
+
+/* 결과 */
+
+.result-box {
+
+  max-width: 600px;
+
+  margin: 70px auto;
+
+  padding: 55px 30px;
+
+  text-align: center;
+
+  background: var(--panel);
+
+  border: 1px solid var(--border);
+
+}
+
+
+.result-symbol {
+
+  color: var(--gold);
+
+  font-size: 40px;
+
+}
+
+
+.result-label {
+
+  display: block;
+
+  margin-top: 20px;
+
+  color: var(--gold);
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+}
+
+
+.result-box h2 {
+
+  margin: 15px 0;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 40px;
+
+}
+
+
+.result-box p {
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+}
+
+
+.final-score {
+
+  margin: 35px 0;
+
+  padding: 25px;
+
+  border-top: 1px solid var(--border);
+
+  border-bottom: 1px solid var(--border);
+
+}
+
+
+.final-score span {
+
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+}
+
+
+.final-score strong {
+
+  display: block;
+
+  margin-top: 10px;
+
+  color: var(--gold-light);
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 60px;
+
+}
+
+
+.result-stats {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 70px;
+
+}
+
+
+.result-stats span,
+.result-stats strong {
+
+  display: block;
+
+}
+
+
+.result-stats span {
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+}
+
+
+.result-stats strong {
+
+  margin-top: 8px;
+
+  color: var(--gold);
+
+  font-size: 24px;
+
+}
+
+
+.result-actions {
+
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 35px;
+
+}
+
+
+.result-actions .gold-button {
+
+  margin-top: 0;
+
+}
+
+
+.outline-button {
+
+  padding: 15px 25px;
+
+  border: 1px solid var(--border);
+
+  background: transparent;
+
+  color: var(--cream);
+
+}
+
+
+.outline-button:hover {
+
+  border-color: var(--gold);
+
+  color: var(--gold);
+
+}
+
+
+/* 모바일 */
+
+@media (max-width: 800px) {
+
+  .game-grid {
+
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+
+  .game-card:last-child {
+
+    grid-column: span 2;
+
+  }
+
+}
+
+
+@media (max-width: 550px) {
+
+  .app {
+
+    padding: 18px 15px 0;
+
+  }
+
+  .topbar {
+
+    align-items: flex-start;
+
+  }
+
+  .brand-symbol {
+
+    width: 38px;
+
+    height: 38px;
+
+    font-size: 18px;
+
+  }
+
+  .brand h1 {
+
+    font-size: 18px;
+
+  }
+
+  .brand p {
+
+    font-size: 8px;
+
+  }
+
+  .header-stats {
+
+    gap: 12px;
+
+  }
+
+  .header-stats span {
+
+    font-size: 8px;
+
+  }
+
+  .header-stats strong {
+
+    font-size: 16px;
+
+  }
+
+  .hero {
+
+    padding: 45px 0;
+
+  }
+
+  .hero h2 {
+
+    font-size: 40px;
+
+  }
+
+  .hero p {
+
+    font-size: 11px;
+
+  }
+
+  .game-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .game-card:last-child {
+
+    grid-column: auto;
+
+  }
+
+  .game-card {
+
+    min-height: 210px;
+
+  }
+
+  .record-panel {
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+  }
+
+  .record-values {
+
+    margin-left: 0;
+
+    width: 100%;
+
+    justify-content: space-between;
+
+  }
+
+  .game-header {
+
+    padding-top: 25px;
+
+  }
+
+  #gameTitle {
+
+    font-size: 21px;
+
+  }
+
+  .game-board {
+
+    padding: 12px;
+
+  }
+
+  .game-area {
+
+    min-height: 330px;
+
+  }
+
+  .memory-grid {
+
+    grid-template-columns: repeat(4, 60px);
+
+    gap: 7px;
+
+  }
+
+  .memory-card {
+
+    width: 60px;
+
+    height: 70px;
+
+  }
+
+  .number-grid {
+
+    grid-template-columns: repeat(4, 55px);
+
+    gap: 7px;
+
+  }
+
+  .number-button {
+
+    width: 55px;
+
+    height: 55px;
+
+  }
+
+  .result-box {
+
+    margin: 35px auto;
+
+    padding: 35px 20px;
+
+  }
+
+  .result-box h2 {
+
+    font-size: 32px;
+
+  }
+
+  .final-score strong {
+
+    font-size: 50px;
+
+  }
+
+  footer {
+
+    flex-direction: column;
+
+    gap: 8px;
+
+  }
+
+}
+
+
+@media (max-width: 370px) {
+
+  .memory-grid {
+
+    grid-template-columns: repeat(4, 52px);
+
+  }
+
+  .memory-card {
+
+    width: 52px;
+
+    height: 62px;
+
+  }
+
+  .number-grid {
+
+    grid-template-columns: repeat(4, 48px);
+
+  }
+
+  .number-button {
+
+    width: 48px;
+
+    height: 48px;
+
+  }
+
+}
